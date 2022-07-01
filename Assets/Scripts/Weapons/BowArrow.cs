@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class BowArrow : Weapon
 {
-    [SerializeField] Image mage;
     [SerializeField] GameObject _arrow;
     [SerializeField] float speed;
     [SerializeField] GameObject[] projectiles;
@@ -19,7 +18,8 @@ public class BowArrow : Weapon
     {
         if(timer > 1f)
         {
-            ray = Camera.main.ScreenPointToRay(mage.rectTransform.position);
+            
+            ray = FireManager.Instance.ray;
             Obje();
             timer = 0;
         }

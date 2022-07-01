@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject altPanel;
     [SerializeField] int killGoal;
     [SerializeField] Transform weaponParent;
-    [SerializeField] FireManager fireManager;
     [SerializeField] Transform fireParent;
     private void Awake()
     {
@@ -23,7 +22,7 @@ public class GameManager : MonoBehaviour
     {
         
         weaponParent.GetChild(PlayerPrefs.GetInt("ChosenWeapon")).gameObject.SetActive(true);
-        fireManager.weapon = fireParent.GetChild(PlayerPrefs.GetInt("ChosenWeapon")).GetComponent<Weapon>();
+      FireManager.Instance.weapon = fireParent.GetChild(PlayerPrefs.GetInt("ChosenWeapon")).GetComponent<Weapon>();
     }
     public void SetWeapon(int index)
     {

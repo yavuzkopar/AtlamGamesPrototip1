@@ -6,21 +6,18 @@ using TMPro;
 
 public class BulletMovement : MonoBehaviour
 {
-   [SerializeField] Image mage;
     [SerializeField] TextMeshProUGUI Kazanma;
     [SerializeField] TextMeshProUGUI Kaybetme;
     [SerializeField] GameObject restartButon;
-   
-    Ray ray;
-    // Update is called once per frame
+
     private void OnEnable()
     {
         GameManager.Instance.SetCamera(2);
     }
     void Update()
     {
-        ray = Camera.main.ScreenPointToRay(mage.rectTransform.position);
-        transform.forward = ray.direction;
+        
+        transform.forward = FireManager.Instance.ray.direction;
         transform.Translate(Vector3.forward * Time.deltaTime * 2f);
     }
     float damage = 100;

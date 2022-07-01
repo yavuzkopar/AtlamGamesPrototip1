@@ -10,9 +10,16 @@ public class FireManager : MonoBehaviour
     [SerializeField] Image mage;
     [SerializeField] Transform tr;
     [SerializeField] LayerMask layer;
+    public Ray ray;
+    private static FireManager instance;
+    public static FireManager Instance { get { return instance; } }
+    private void Awake()
+    {
+        instance = this;
+    }
     private void Update()
     {
-        Ray ray = Camera.main.ScreenPointToRay(mage.rectTransform.position);
+        ray = Camera.main.ScreenPointToRay(mage.rectTransform.position);
         bool hasHit = Physics.Raycast(ray, out RaycastHit hit, 100f, layer);
         if (hasHit)
             tr.LookAt(hit.point);
